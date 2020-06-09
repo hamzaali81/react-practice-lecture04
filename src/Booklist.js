@@ -11,7 +11,8 @@ class Booklist extends Component {
         super(props)
         this.state={
             
-                books: booksData
+                books: booksData,
+                // name:'john'
         }
     }
 //  state={
@@ -48,7 +49,22 @@ class Booklist extends Component {
     //  ]
     // }
 
+    // handleDelete=()=>{
+    //     console.log(`I 'm Parent`)
+    // }
+    // handleDelete=(id)=>{
+    //     console.log(id)
+    // }
+    handleDelete=id=>{
+       console.log(this.state.books)
 
+    const sortedBooks=this.state.books.filter((item)=>item.id !== id)
+    // console.log(sortedBooks);
+
+    this.setState({
+     books: sortedBooks        
+    })
+}
     render() {
         //this.setState({})
         // const books=this.state.books.map((item)=>item.book);
@@ -67,7 +83,7 @@ class Booklist extends Component {
                 {/* <Book book={this.books[0]}/> */}
                 {/* {this.state.books.map((item,index)=> (<Book key={index} info={item} />))} */}
                 {/* {this.state.books.map((item)=> (<Book key={item.id} info={item} />))} */}
-                 {this.state.books.map((item,index)=>(<Book key={index} info={item} />))}
+                 {this.state.books.map((item,index)=>(<Book key={index} info={item} handleDelete={this.handleDelete} />))}
             </section>
         );
     }
